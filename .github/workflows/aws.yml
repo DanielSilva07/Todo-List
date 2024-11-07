@@ -1,0 +1,30 @@
+name: CI-CD
+on:
+  push:
+    branches: [ "main" ]
+    
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+   
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    - name: Build project
+      run: mvn clean install -DsKipTests
+    - name: Login Docker Hub
+      run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+    - name: Build docker image
+      # run: docker build -t daniel00dev/spring-boot-api-agendamentos .
+    - name: push image docker
+      # run: docker push daniel00dev/spring-boot-api-agendamentos
+
+    
+
+   

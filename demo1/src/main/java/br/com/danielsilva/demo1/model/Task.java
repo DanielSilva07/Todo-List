@@ -1,4 +1,4 @@
-package br.com.danielsilva.demo1.domain;
+package br.com.danielsilva.demo1.model;
 import jakarta.persistence.*;
 import lombok.*;
 
